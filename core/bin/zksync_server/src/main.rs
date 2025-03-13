@@ -11,6 +11,7 @@ use zksync_config::{
         },
         fri_prover_group::FriProverGroupConfig,
         house_keeper::HouseKeeperConfig,
+        tx_sink::TxSinkConfig,
         BasicWitnessInputProducerConfig, ContractVerifierSecrets, ContractsConfig,
         DataAvailabilitySecrets, DatabaseSecrets, ExperimentalVmConfig,
         ExternalPriceApiClientConfig, FriProofCompressorConfig, FriProverConfig,
@@ -235,5 +236,6 @@ fn load_env_config() -> anyhow::Result<TempConfigStore> {
         experimental_vm_config: ExperimentalVmConfig::from_env().ok(),
         prover_job_monitor_config: None,
         timestamp_asserter_config: TimestampAsserterConfig::from_env().ok(),
+        tx_sink_config: TxSinkConfig::from_env().ok(),
     })
 }
