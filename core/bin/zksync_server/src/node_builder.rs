@@ -362,7 +362,9 @@ impl MainNodeBuilder {
             .unwrap_or_default();
 
         // On main node we always use master pool sink.
-        self.node.add_layer(MasterPoolSinkLayer);
+        self.node.add_layer(MasterPoolSinkLayer {
+            tx_sink_config: self.configs.tx_sink_config.clone().unwrap_or_default(),
+        });
 
         let layer = TxSenderLayer::new(
             TxSenderConfig::new(
